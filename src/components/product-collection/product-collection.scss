@@ -1,0 +1,111 @@
+.product_collection {
+	.flex {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		overflow-x: hidden;
+
+		@media screen and (max-width: 650px) {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.sub_section_header {
+			margin: 0;
+
+			h4 {
+				text-transform: capitalize;
+			}
+		}
+
+		.filter_container {
+			@media screen and (max-width: 650px) {
+				margin: 0 0 0 auto;
+				margin-top: 13px;
+				align-items: flex-end;
+			}
+
+			@media screen and (max-width: 440px) {
+				display: block;
+				width: 100%;
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+
+				&::-webkit-scrollbar {
+					height: 1px;
+					background: var(--color-white);
+				}
+				&::-webkit-scrollbar-thumb {
+					height: 0px;
+					background: #e1e1e1;
+				}
+			}
+
+			.filter {
+				display: flex;
+				align-items: center;
+
+				@media screen and (max-width: 440px) {
+					width: 411px;
+					overflow-x: scroll;
+				}
+
+				p {
+					margin: 0;
+					margin-right: 5px;
+					padding: 1px 10px;
+					padding-bottom: 3px;
+					font-size: 0.95em;
+					font-weight: 600;
+					text-transform: capitalize;
+					background: var(--color-white);
+					border-radius: 3px;
+					cursor: pointer;
+
+					&.active {
+						background: var(--color-yellow);
+					}
+
+					&:last-child {
+						margin-right: 0;
+					}
+				}
+			}
+		}
+	}
+
+	.product_listing {
+		display: grid;
+		grid-template-columns: repeat(4, auto);
+		gap: 20px;
+		grid-row-gap: 60px;
+		margin-top: 40px;
+
+		@media screen and (max-width: 860px) {
+			grid-template-columns: repeat(3, auto);
+		}
+
+		@media screen and (max-width: 620px) {
+			margin-top: 30px;
+			grid-template-columns: repeat(2, auto);
+			gap: 10px;
+			grid-row-gap: 50px;
+		}
+	}
+
+	.see_more {
+		margin: 0 auto;
+		margin-top: 50px;
+		text-align: center;
+		width: 100%;
+
+		a {
+			font-size: 0.95em;
+			font-weight: bold;
+			color: var(--color-text);
+			border-bottom: 2px solid var(--color-text);
+			text-decoration: none;
+			background: var(--color-white);
+		}
+	}
+}

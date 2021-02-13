@@ -1,0 +1,58 @@
+.product_card {
+	margin: 0 auto;
+	width: 180px;
+	text-align: center;
+
+	@media screen and (max-width: 400px) {
+		width: 135px;
+	}
+
+	img {
+		margin-bottom: 12px;
+		width: 180px;
+		height: 200px;
+		object-fit: contain;
+		border-radius: 5px;
+		border: 1px solid rgba(255, 206, 112, 0.2);
+
+		@media screen and (max-width: 400px) {
+			width: 135px;
+			height: 155px;
+		}
+	}
+
+	h6 {
+		margin-bottom: 4px;
+		font-size: 1.1em;
+		font-weight: 600;
+		width: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	p {
+		margin-bottom: 15px;
+		font-size: 1.2em;
+		font-weight: bold;
+		color: var(--color-yellow);
+	}
+
+	a {
+		padding: 8px 15px;
+		padding-bottom: 9px;
+		font-size: 0.8em;
+		font-weight: bold;
+		color: var(--color-text);
+		background: var(--color-off-white);
+		border: 1px solid rgba(51, 51, 51, 0.1);
+		border-radius: 3px;
+
+		&:hover {
+			text-decoration: none;
+			color: var(--color-text);
+			background: var(--color-yellow);
+			border: 1px solid var(--color-yellow);
+		}
+	}
+}

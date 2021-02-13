@@ -1,0 +1,51 @@
+.spinner_overlay {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 3;
+
+	&::before {
+		position: fixed;
+		top: 74px;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		content: "";
+		background: rgba(0, 0, 0, 0.45);
+		z-index: 2;
+
+		@media screen and (max-width: 767px) {
+			top: 54px;
+		}
+	}
+}
+
+.spinner_container {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	border: 3px solid rgba(255, 206, 112, 0.7);
+	border-radius: 50%;
+	border-top-color: var(--color-text);
+	z-index: 4;
+	animation: spin 1s ease-in-out infinite;
+	-webkit-animation: spin 1s ease-in-out infinite;
+
+	@keyframes spin {
+		to {
+			-webkit-transform: rotate(360deg);
+		}
+	}
+	@-webkit-keyframes spin {
+		to {
+			-webkit-transform: rotate(360deg);
+		}
+	}
+}

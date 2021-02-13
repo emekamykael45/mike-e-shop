@@ -1,0 +1,30 @@
+.home_page {
+	.banner {
+		margin-top: 30px;
+	}
+
+	.category_overview {
+		margin-top: 30px;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 15px;
+
+		@media screen and (max-width: 767px) {
+			margin-top: 20px;
+			grid-template-columns: repeat(2, 1fr);
+
+			.category_banner:first-child {
+				display: none;
+			}
+		}
+
+		@media screen and (max-width: 450px) {
+			grid-template-columns: repeat(1, 1fr);
+			gap: 8px;
+		}
+	}
+
+	.product_overview {
+		margin-top: 80px;
+	}
+}

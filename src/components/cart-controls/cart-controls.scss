@@ -1,0 +1,24 @@
+.cart_controls {
+	display: flex;
+	align-items: center;
+	margin-top: 7px;
+
+	.btn {
+		padding: 1px 7px;
+		padding-bottom: 0px;
+		font-size: 0.8em;
+		font-family: "Courier New" !important;
+		font-weight: bold;
+		background: var(--color-off-white);
+		border: 1px solid #bbb;
+		border-radius: 3px;
+
+		&:focus {
+			box-shadow: none;
+		}
+	}
+
+	.btn_remove {
+		margin-right: 12px;
+	}
+}
