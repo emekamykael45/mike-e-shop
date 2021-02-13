@@ -24,7 +24,6 @@ For the documentation and details of this project, check [Mike e-shop Documentat
 6. Add a `REACT_APP_XENDIT_SECRET_KEY`, and assign it the value of your Base64 `secret key`. It should look like this:
    `REACT_APP_XENDIT_SECRET_KEY=your_secret_key_here`.
 7. Install `Allow CORS` extension on your browser from the [Chrome Web Store](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf) and ensure to toggle it `ON`.
-   ![alt text](https://res.cloudinary.com/emekamykael45/image/upload/v1613178407/mike-e-shop/Screenshot_2021-02-13_at_2.06.09_AM_l6mgis.png)
 
 ## Installation
 
