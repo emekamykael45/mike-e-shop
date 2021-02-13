@@ -11,7 +11,7 @@ Install `Allow CORS` extension on your browser from the [Chrome Web Store here](
 
 ## Documentation
 
-For the documentation and details of this project, check [Mike e-shop Documentation](https://res.cloudinary.com/emekamykael45/image/upload/v1613166346/mike-e-shop/MIKE_E-SHOP_USING_XENDIT_PAYMENT_API_bpv1ik.pdf).
+For the documentation and details of this project, check [Mike e-shop Documentation](https://res.cloudinary.com/emekamykael45/image/upload/v1613179858/mike-e-shop/MIKE_E-SHOP_USING_XENDIT_PAYMENT_API_2_t9mgdm.pdf).
 
 ## Before you Start
 
