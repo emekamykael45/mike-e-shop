@@ -69,52 +69,86 @@ export const createPaymentInvoice = ({ amount, payerEmail }) => async (
 		success_redirect_url: `${window.location.origin}/checkout`,
 	};
 
-	const res = await xenditAPI.post(`invoices`, JSON.stringify(invoiceData));
-	if (res?.data?.invoice_url) {
-		window.location.assign(res?.data?.invoice_url);
-		useLocalStorage.set("invoice_id", res?.data?.id);
-	} else {
+	try {
+		const res = await xenditAPI.post(`invoices`, JSON.stringify(invoiceData));
+		if (res?.data?.invoice_url) {
+			window.location.assign(res?.data?.invoice_url);
+			useLocalStorage.set("invoice_id", res?.data?.id);
+		}
+	} catch (err) {
 		dispatch(setIsLoading(false));
-		dispatch(
-			setAlert({
-				show: true,
-				type: "error",
-				message: "Something went wrong while generating your invoice",
-			})
-		);
+		if (typeof err?.response === "undefined") {
+			dispatch(
+				setAlert({
+					show: true,
+					type: "error",
+					message: "cors",
+				})
+			);
+		} else {
+			dispatch(
+				setAlert({
+					show: true,
+					type: "error",
+					message: "Something went wrong while generating your invoice",
+				})
+			);
+		}
 	}
 };
 
 export const getInvoiceID = () => async (dispatch) => {
+	dispatch(setIsLoading(true));
 	const invoice_id = useLocalStorage.get("invoice_id");
 
-	dispatch(setIsLoading(true));
-
-	const res = await xenditAPI.get(`/invoices/${invoice_id}`);
-	if (res?.data?.status === "PAID") {
-		dispatch(
-			setAlert({
-				show: true,
-				type: "success",
-				message: "Payment successful!",
-			})
-		);
-		useLocalStorage.remove("invoice_id");
-		useLocalStorage.remove("cartItems");
-		setTimeout(() => {
-			dispatch(closeAlert());
-			window.location.assign("/");
-		}, 2000);
-		clearTimeout();
-	} else {
+	try {
+		const res = await xenditAPI.get(`/invoices/${invoice_id}`);
+		if (res?.data?.status === "PAID") {
+			dispatch(
+				setAlert({
+					show: true,
+					type: "success",
+					message: "Payment successful!",
+				})
+			);
+			useLocalStorage.remove("invoice_id");
+			useLocalStorage.remove("cartItems");
+			setTimeout(() => {
+				dispatch(closeAlert());
+				window.location.assign("/");
+			}, 2000);
+			clearTimeout();
+		} else {
+			dispatch(
+				setAlert({
+					show: true,
+					type: "error",
+					message: "Something went wrong while processing your payment",
+				})
+			);
+			useLocalStorage.remove("invoice_id");
+		}
+	} catch (err) {
 		dispatch(setIsLoading(false));
-		dispatch(
-			setAlert({
-				show: true,
-				type: "error",
-				message: "Something went wrong while processing your payment",
-			})
-		);
-		useLocalStorage.remove("invoice_id");
+		if (typeof err?.response === "undefined") {
+			dispatch(
+				setAlert({
+					show: true,
+					type: "error",
+					message: "cors",
+				})
+			);
+		} else {
+			dispatch(
+				setAlert({
+					show: true,
+					type: "error",
+					message:
+						err?.response?.data?.message ||
+						"Something went wrong while processing your payment",
+				})
+			);
+			useLocalStorage.remove("invoice_id");
+		}
 	}
 };

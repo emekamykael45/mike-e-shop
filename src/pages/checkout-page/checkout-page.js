@@ -106,7 +106,20 @@ const CheckoutPage = () => {
 			{notification.show && (
 				<Alert
 					className={notification.type}
-					textBeforeLink={notification.message}
+					textBeforeLink={
+						notification.message === "cors"
+							? "This request has been blocked by CORS policy. Kindly "
+							: notification.message
+					}
+					linkText={notification.message === "cors" && "CLICK HERE"}
+					linkTo={
+						notification.message === "cors" &&
+						"https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf"
+					}
+					textAfterLink={
+						notification.message === "cors" &&
+						" to install the 'Allow CORS' extension from the Chrome Web Store in your browser, toggle it ON and retry again"
+					}
 					close={notification.close}
 					closeAlert={() => dispatch(closeAlert())}
 				/>
